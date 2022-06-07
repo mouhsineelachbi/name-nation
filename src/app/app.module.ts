@@ -4,11 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListNamesComponent } from './components/list-names/list-names.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './share/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListNamesComponent
+    ListNamesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
