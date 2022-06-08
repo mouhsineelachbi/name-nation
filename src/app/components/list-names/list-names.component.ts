@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs';
 import { NameService } from 'src/app/services/name.service';
 import { AppState } from 'src/app/store/app.states';
-import { FetchNames } from 'src/app/store/name/name.actions';
+import { FetchNames, NameActionTypes } from 'src/app/store/name/name.actions';
 
 @Component({
   selector: 'app-list-names',
@@ -10,11 +13,58 @@ import { FetchNames } from 'src/app/store/name/name.actions';
   styleUrls: ['./list-names.component.css'],
 })
 export class ListNamesComponent implements OnInit {
-  names: string[] = [];
+  names?: string[];
+  error?: string;
+  getError = this.store
+    .select((state) => state.names.errorMessage)
+    .pipe((error) => error);
+  getNames = this.store
+    .select((state) => state.names.names)
+    .pipe(map((names) => names.split(',')));
 
-  constructor(private service: NameService, private store: Store<AppState>) {}
+  constructor(
+    private service: NameService,
+    private store: Store<AppState>,
+    @Inject(ToastrService) private toastr: ToastrService,
+    @Inject(Actions) private actions: Actions
+  ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(FetchNames())
+    this.store.dispatch(FetchNames());
+    this.actions
+      .pipe(ofType(NameActionTypes.FETCH_NAMES_SUCCESS))
+      .subscribe(() =>
+        this.store
+          .select((state) => state.names.names.split(','))
+          .subscribe((names) => {
+            this.names = names;
+            this.showSuccess();
+          })
+      );
+
+    this.actions
+      .pipe(ofType(NameActionTypes.FETCH_NAMES_FAILED))
+      .subscribe(() =>
+        this.store
+          .select((state) => state.names.errorMessage)
+          .subscribe((error) => {
+            this.showFailed(error);
+          })
+      );
+  }
+  showSuccess() {
+    this.toastr.success(
+      'Names has been successfully fetched from api',
+      'Fetching names',
+      {
+        progressBar: true,
+      }
+    );
+  }
+
+  showFailed(error: string) {
+    this.toastr.error(error, 'Error', {
+      progressBar: true,
+    });
   }
 }
