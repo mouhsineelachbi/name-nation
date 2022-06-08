@@ -8,8 +8,10 @@ import { HeaderComponent } from './share/header/header.component';
 import { NameComponent } from './components/list-names/name/name.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
 import { NamesReducers } from './store/name/name.reducers';
+import { NamesEffect } from './store/name/name.effects';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,10 @@ import { NamesReducers } from './store/name/name.reducers';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    EffectsModule.forRoot([
+      NamesEffect,
+      
+    ]),
     StoreModule.forRoot({
       names: NamesReducers
     }),
