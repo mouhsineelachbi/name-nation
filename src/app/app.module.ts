@@ -12,6 +12,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
 import { NamesReducers } from './store/name/name.reducers';
 import { NamesEffect } from './store/name/name.effects';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NamesEffect } from './store/name/name.effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     EffectsModule.forRoot([
       NamesEffect,
       
