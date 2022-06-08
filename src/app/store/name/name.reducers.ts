@@ -2,12 +2,12 @@ import { createReducer, on } from "@ngrx/store";
 import { FetchNames, FetchNamesFailed, FetchNamesSuccess } from "./name.actions";
 
 export interface NamesState {
-    names: string[]
+    names: string,
     errorMessage: string
 }
 
 export const initialState: NamesState = {
-    names: [],
+    names: '',
     errorMessage: '',
 };
 
