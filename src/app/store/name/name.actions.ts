@@ -12,7 +12,7 @@ export const FetchNames = createAction(
 
 export const FetchNamesSuccess = createAction(
     NameActionTypes.FETCH_NAMES_SUCCESS,
-    props<{ names: string[] }>(),
+    props<{ names: string }>(),
 );
 
 
