@@ -6,6 +6,7 @@ import { ListNamesComponent } from './components/list-names/list-names.component
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './share/header/header.component';
 import { NameComponent } from './components/list-names/name/name.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NameComponent } from './components/list-names/name/name.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
