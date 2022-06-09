@@ -1,5 +1,4 @@
 import { createReducer, on } from '@ngrx/store';
-import { initialState } from './../name/name.reducers';
 import { NameNationality } from "src/app/model/name-nationality.model";
 import { FetchNameNationality, FetchNameNationalityFailed, FetchNameNationalitySuccess } from './name-nationality.actions';
 
@@ -10,7 +9,7 @@ export interface NameNationalityState {
 
 
 export const initialState: NameNationalityState = {
-    nameNationality: []
+    nameNationality: [],
     errorMessage: ''
 }
 

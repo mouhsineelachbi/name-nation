@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { NameNationality } from 'src/app/model/name-nationality.model';
 
 export enum NameNationalityActionTypes {
     FETCH_NAMENATIONALITY = '[Name] Fetch Name Nationality',
@@ -17,5 +18,5 @@ export const FetchNameNationalitySuccess = createAction(
 
 export const FetchNameNationalityFailed = createAction(
     NameNationalityActionTypes.FETCH_NAMENATIONALITY_FAILED,
-    props<{ error: string}>();
+    props<{ error: string}>()
 )
