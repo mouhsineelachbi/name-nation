@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { NameNationality } from '../model/name-nationality.model';
+import { NameNationality } from '../models/name-nationality.model';
 import { AppState } from '../store/app.states';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { NameNationality } from "src/app/model/name-nationality.model";
+import { NameNationality } from "src/app/models/name-nationality.model";
 import { FetchNameNationality, FetchNameNationalityFailed, FetchNameNationalitySuccess } from './name-nationality.actions';
 
 export interface NameNationalityState {

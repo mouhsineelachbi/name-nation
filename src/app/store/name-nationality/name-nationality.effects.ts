@@ -1,4 +1,4 @@
-import { NameNationality } from 'src/app/model/name-nationality.model';
+import { NameNationality } from 'src/app/models/name-nationality.model';
 import { catchError, map, of, switchMap, tap, mergeMap } from 'rxjs';
 import { Inject, Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";

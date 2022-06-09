@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { NameNationality } from 'src/app/model/name-nationality.model';
+import { NameNationality } from 'src/app/models/name-nationality.model';
 
 export enum NameNationalityActionTypes {
     FETCH_NAMENATIONALITY = '[Name] Fetch Name Nationality',

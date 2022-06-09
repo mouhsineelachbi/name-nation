@@ -3,7 +3,7 @@ import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { map, Observable, tap } from 'rxjs';
-import { NameNationality } from 'src/app/model/name-nationality.model';
+import { NameNationality } from 'src/app/models/name-nationality.model';
 import { NameService } from 'src/app/services/name.service';
 import { AppState } from 'src/app/store/app.states';
 import {
