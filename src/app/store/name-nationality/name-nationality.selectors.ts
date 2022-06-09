@@ -13,3 +13,8 @@ export const selectError = createSelector(
     selectNameNationalityState,
     (state: NameNationalityState) => state.errorMessage
 )
+
+export const selectIsLoading = createSelector(
+    selectNameNationalityState,
+    (state: NameNationalityState) => state.loading,
+)
