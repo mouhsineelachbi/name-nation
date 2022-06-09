@@ -1,8 +1,24 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-block d-flex flex-column justify-content-center align-items-center card-content">
-            <h4 class="card-title">{{name}}</h4>
-            <h6 class="card-subtitle text-muted">Switzerland</h6>
+            <h4 class="card-title">{{ name }}</h4>
+            <div class="col-12 d-flex flex-column align-items-center">
+                <div *ngIf="countries!.length > 0">
+                    <div class="row d-flex" *ngFor="let country of countries">
+                        <h6 class="card-subtitle text-muted w-25 d-flex justify-content-between"
+                            *ngIf="country.country_id.length > 0"> {{country.country_id}}
+                        </h6>
+                        <h6 class="card-subtitle text-muted w-75 d-flex justify-content-end"
+                            *ngIf="country.country_id.length > 0"> {{country.probability}}
+                            %
+                        </h6>
+                    </div>
+                </div>
+                <div *ngIf="countries!.length <= 0">
+                    <h6>No Country prediction</h6>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
