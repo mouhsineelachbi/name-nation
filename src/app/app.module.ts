@@ -14,6 +14,9 @@ import { NamesReducers } from './store/name/name.reducers';
 import { NamesEffect } from './store/name/name.effects';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NameNationalityReducer } from './store/name-nationality/name-nationality.reducers';
+import { NameNationalityEffect } from './store/name-nationality/name-nationality.effects';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,16 +27,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
     EffectsModule.forRoot([
       NamesEffect,
-      
+      NameNationalityEffect            
     ]),
     StoreModule.forRoot({
-      names: NamesReducers
+      names: NamesReducers,
+      nationality: NameNationalityReducer
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
