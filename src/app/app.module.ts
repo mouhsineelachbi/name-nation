@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListNamesComponent } from './components/list-names/list-names.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './share/header/header.component';
 import { NameComponent } from './components/list-names/name/name.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -17,13 +16,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NameNationalityReducer } from './store/name-nationality/name-nationality.reducers';
 import { NameNationalityEffect } from './store/name-nationality/name-nationality.effects';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListNamesComponent,
+    NameComponent,
     HeaderComponent,
-    NameComponent
   ],
   imports: [
     BrowserModule,
