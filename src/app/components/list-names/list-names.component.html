@@ -1,9 +1,12 @@
 <div class="row justify-content-center">
     <div class="col-8">
-        <div class="grid">
-            <div *ngFor="let name of names">
-                <app-name [name]="name"></app-name>
+        <div *ngIf="!(isLoading | async)" class="grid">
+            <div *ngFor="let person of namesNationalities">
+                <app-name [name]="person.name" [countries]="person.country"></app-name>
             </div>
+        </div>
+        <div *ngIf="(isLoading | async)">
+            <h4>Loading...</h4>
         </div>
     </div>
 </div>
