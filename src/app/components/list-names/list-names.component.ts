@@ -20,7 +20,6 @@ export class ListNamesComponent implements OnInit {
     .pipe((error) => error);
   getNames = this.store
     .select((state) => state.names.names)
-    .pipe(map((names) => names.split(',')));
 
   constructor(
     private service: NameService,
@@ -35,7 +34,7 @@ export class ListNamesComponent implements OnInit {
       .pipe(ofType(NameActionTypes.FETCH_NAMES_SUCCESS))
       .subscribe(() =>
         this.store
-          .select((state) => state.names.names.split(','))
+          .select((state) => state.names.names)
           .subscribe((names) => {
             this.names = names;
             this.showSuccess();
