@@ -5,31 +5,35 @@ import { FetchNameNationality, FetchNameNationalityFailed, FetchNameNationalityS
 export interface NameNationalityState {
     nameNationality: NameNationality[],
     errorMessage: string,
+    loading: boolean,
 }
-
 
 export const initialState: NameNationalityState = {
     nameNationality: [],
-    errorMessage: ''
+    errorMessage: '',
+    loading: false
 }
 
 export const NameNationalityReducer = createReducer(
     initialState,
     on(FetchNameNationality, (state, action)=>{
         return {
-            ...state
+            ...state,
+            loading: true,
         }
     }),
     on(FetchNameNationalitySuccess, (state, {nameNationality})=>{
         return {
             ...state,
-            nameNationality
+            loading: false,
+            nameNationality: nameNationality,
         }
     }),
     on(FetchNameNationalityFailed, (state, {error})=>{
         return {
             ...state,
-            errorMessage: error
+            loading: false,
+            errorMessage: error,
         }
     })
 )
