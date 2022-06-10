@@ -1,5 +1,5 @@
 import { NameNationality } from 'src/app/models/name-nationality.model';
-import { catchError, map, of, switchMap, tap, mergeMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap, mergeMap, mergeAll } from 'rxjs';
 import { Inject, Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { NameService } from "src/app/services/name.service";
@@ -17,7 +17,7 @@ export class NameNationalityEffect {
             ofType(NameNationalityActionTypes.FETCH_NAMENATIONALITY),
             switchMap((action: any)=>  {
                 return this.service.getNamesNationality().pipe(
-                    map((names: any) => FetchNameNationalitySuccess({ nameNationality: names})),
+                    map((names: any) => FetchNameNationalitySuccess({ nameNationality: [].concat.apply([], names)})),
                     tap((names: any) => console.log(names)),
                     catchError((error: any) => of(FetchNameNationalityFailed({ error })))
                 )
