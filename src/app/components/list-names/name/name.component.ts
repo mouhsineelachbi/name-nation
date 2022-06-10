@@ -10,6 +10,7 @@ export class NameComponent implements OnInit {
 
   @Input()
   name?: string;
+
   @Input()
   countries?: Country[]
   
@@ -18,11 +19,11 @@ export class NameComponent implements OnInit {
   ngOnInit(): void {
 
     /*
-    * Modify probabilities to be in %
+    *   Modify probabilities to be in %
     */
     if(this.countries) {
       this.countries = this.countries.map((country: Country) => {
-        return new CountryC(country.country_id, Number(country.probability.toFixed(2))*100)
+        return new CountryC(country.country_id, Number(country.probability.toFixed(2)))
       })
     }
   }
