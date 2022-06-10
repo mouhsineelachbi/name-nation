@@ -23,7 +23,7 @@ export class NameComponent implements OnInit {
     */
     if(this.countries) {
       this.countries = this.countries.map((country: Country) => {
-        return new CountryC(country.country_id, Number(country.probability.toFixed(2)))
+        return new CountryC(country.country_id, Number((country.probability*100).toFixed(2)))
       })
     }
   }
