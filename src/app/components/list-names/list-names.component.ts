@@ -7,7 +7,8 @@ import { NameNationality } from 'src/app/models/name-nationality.model';
 import { NameService } from 'src/app/services/name.service';
 import { AppState } from 'src/app/store/app.states';
 import {
-  FetchNameNationality, NameNationalityActionTypes
+  FetchNameNationality,
+  NameNationalityActionTypes,
 } from 'src/app/store/name-nationality/name-nationality.actions';
 import { FetchNames, NameActionTypes } from 'src/app/store/name/name.actions';
 
@@ -17,9 +18,8 @@ import { FetchNames, NameActionTypes } from 'src/app/store/name/name.actions';
   styleUrls: ['./list-names.component.css'],
 })
 export class ListNamesComponent implements OnInit {
-
-  namesNationalities?: NameNationality[]
-  isLoading = this.store.select((state)=> state?.namesNationality?.loading)
+  namesNationalities?: NameNationality[];
+  isLoading = this.store.select((state) => state?.namesNationality?.loading);
 
   constructor(
     private service: NameService,
@@ -30,12 +30,12 @@ export class ListNamesComponent implements OnInit {
 
   ngOnInit(): void {
     /*
-     * dispatch fetch names to get names from JAVA Rest API
+     *  dispatch fetch names to get names from JAVA Rest API
      */
     this.store.dispatch(FetchNames());
 
     /*
-     * Listen to success action to dispatch fetch nationality of names
+     *  Listen to success action to dispatch fetch nationality of names
      */
     this.actions
       .pipe(ofType(NameActionTypes.FETCH_NAMES_SUCCESS))
@@ -48,7 +48,7 @@ export class ListNamesComponent implements OnInit {
       );
 
     /*
-     * Listen to failed action to get error
+     *  Listen to failed action to get error
      */
     this.actions
       .pipe(ofType(NameActionTypes.FETCH_NAMES_FAILED))
@@ -61,18 +61,18 @@ export class ListNamesComponent implements OnInit {
       );
 
     /*
-     * Listen to success action to get names nationalities
+     *  Listen to success action to get names nationalities
      */
     this.actions
       .pipe(ofType(NameNationalityActionTypes.FETCH_NAMENATIONALITY_SUCCESS))
-      .subscribe((names:any) => {
+      .subscribe((names: any) => {
         console.log(names.nameNationality);
-        this.namesNationalities = names.nameNationality
-      })
+        this.namesNationalities = names.nameNationality;
+      });
   }
 
   /*
-   * use Toast package to show success notification
+   *  use Toast package to show success notification
    */
   showSuccess() {
     this.toastr.success(
@@ -85,7 +85,7 @@ export class ListNamesComponent implements OnInit {
   }
 
   /*
-   * use Toast package to show error notification
+   *  use Toast package to show error notification
    */
   showFailed(error: string) {
     this.toastr.error(error, 'Error', {
