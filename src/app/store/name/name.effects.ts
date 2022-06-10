@@ -15,7 +15,12 @@ export class NamesEffect {
     @Inject(Actions) private actions: Actions,
     private service: NameService
   ) {}
-
+  
+  /*
+    Effect to fetch list of names from API
+    if it's done success action will be sent
+    if it's not done failed action will be sent
+  */
   fetchNames = createEffect(() =>
     this.actions.pipe(
       ofType(NameActionTypes.FETCH_NAMES),

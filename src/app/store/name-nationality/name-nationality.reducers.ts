@@ -14,6 +14,9 @@ export const initialState: NameNationalityState = {
     loading: false
 }
 
+/*
+*   Reducer to fetch and get list of names nationality
+*/
 export const NameNationalityReducer = createReducer(
     initialState,
     on(FetchNameNationality, (state, action)=>{

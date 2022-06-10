@@ -12,6 +12,11 @@ export class NameNationalityEffect {
         private service: NameService
       ) {}
 
+      /*
+        Effect to fetch list of names nationalities from API
+        if it's done success action will be sent
+        if it's not done failed action will be sent
+    */
       fetchNameNationality = createEffect(()=>
         this.actions.pipe(
             ofType(NameNationalityActionTypes.FETCH_NAMENATIONALITY),

@@ -11,6 +11,9 @@ export const initialState: NamesState = {
     errorMessage: '',
 };
 
+/*
+*   Reducer to fetch and get list of names
+*/
 export const NamesReducers = createReducer(
     initialState,
     on(FetchNames, (state, action) => {
