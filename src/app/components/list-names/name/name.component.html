@@ -6,7 +6,10 @@
                 <div *ngIf="countries!.length > 0">
                     <div class="row d-flex" style="min-width:6rem ;" *ngFor="let country of countries">
                         <h6 class="card-subtitle text-muted w-25 d-flex justify-content-between"
-                            *ngIf="country.country_id.length > 0"> {{country.country_id}}
+                            *ngIf="country.country_id.length > 0">
+                            <span class="flag-icon flag-icon-{{country.country_id | lowercase}} flag-icon-squared"
+                                style="min-width: 13px;"></span>
+                            {{country.country_id}}
                         </h6>
                         <h6 class="card-subtitle text-muted w-75 d-flex justify-content-end"
                             *ngIf="country.country_id.length > 0"> {{country.probability}}%
