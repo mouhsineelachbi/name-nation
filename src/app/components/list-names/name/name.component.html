@@ -4,14 +4,14 @@
             <h4 class="card-title">{{ name }}</h4>
             <div class="col-12 d-flex flex-column align-items-center">
                 <div *ngIf="countries!.length > 0">
-                    <div class="row d-flex" *ngFor="let country of countries">
+                    <div class="row d-flex" style="min-width:6rem ;" *ngFor="let country of countries">
                         <h6 class="card-subtitle text-muted w-25 d-flex justify-content-between"
                             *ngIf="country.country_id.length > 0"> {{country.country_id}}
                         </h6>
                         <h6 class="card-subtitle text-muted w-75 d-flex justify-content-end"
-                            *ngIf="country.country_id.length > 0"> {{country.probability}}
-                            %
+                            *ngIf="country.country_id.length > 0"> {{country.probability}}%
                         </h6>
+
                     </div>
                 </div>
                 <div *ngIf="countries!.length <= 0">
