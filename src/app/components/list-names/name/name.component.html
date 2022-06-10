@@ -7,7 +7,8 @@
                     <div class="row d-flex" style="min-width:6rem ;" *ngFor="let country of countries">
                         <h6 class="card-subtitle text-muted w-25 d-flex justify-content-between"
                             *ngIf="country.country_id.length > 0">
-                            <span class="flag-icon flag-icon-{{country.country_id | lowercase}} flag-icon-squared"
+                            <span
+                                class="flag-icon flag-icon-{{country.country_id | lowercase}} flag-icon-squared border border-light"
                                 style="min-width: 13px;"></span>
                             {{country.country_id}}
                         </h6>
